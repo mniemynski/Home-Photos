@@ -1,7 +1,41 @@
-echo "# Home-Photos" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/mniemynski/Home-Photos.git
-git push -u origin main
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Photo Upload</title>
+</head>
+<body>
+    <h1>Upload Home Photos</h1>
+    <p>Click the buttons below to take photos of the exterior and interior of your home:</p>
+
+    <input type="file" accept="image/*" capture="camera" id="exteriorButton">
+    <input type="file" accept="image/*" capture="camera" id="interiorButton">
+
+    <script>
+        document.getElementById('exteriorButton').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const img = new Image();
+                    img.src = reader.result;
+                    document.body.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('interiorButton').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const img = new Image();
+                    img.src = reader.result;
+                    document.body.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
